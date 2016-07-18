@@ -30,13 +30,16 @@ public class SocketObserver
 
 		#if UNITY_EDITOR
 
-		Debug.Log ("Connection is started on " + m_PortNumber);
+		Debug.Log ("Connection is started on " + m_PortNumber + '.');
 
 		#endif
 
 		m_NetworkStream = m_Client.GetStream ();
+	}
 
-		var data = Encoding.UTF8.GetBytes ("I'm here.\n");
+	public void Write (string text)
+	{
+		var data = Encoding.UTF8.GetBytes (text + '\n');
 		m_NetworkStream.Write (data, 0, data.Length);
 		m_NetworkStream.Flush ();
 	}
@@ -49,7 +52,7 @@ public class SocketObserver
 
 		#if UNITY_EDITOR
 
-		Debug.Log ("Disconnect!");
+		Debug.Log ("Disconnect.");
 
 		#endif
 	}
