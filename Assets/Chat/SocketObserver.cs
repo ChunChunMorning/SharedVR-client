@@ -15,7 +15,7 @@ public class SocketObserver : MonoBehaviour
 
 	void OnDestroy ()
 	{
-		if (m_Client.Connected)
+		if (m_Client != null && m_Client.Connected)
 			Disconnect ();
 	}
 
@@ -43,6 +43,7 @@ public class SocketObserver : MonoBehaviour
 
 	public void Disconnect ()
 	{
+		Write ("quit");
 		m_Client.Close ();
 		StopCoroutine (m_ReadingCoroutine);
 		m_Client = null;
