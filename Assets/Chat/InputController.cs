@@ -14,14 +14,13 @@ public class InputController : MonoBehaviour
 	[SerializeField] Text m_Placeholder;
 	[SerializeField] Text m_Button;
 	[SerializeField] ConsoleController m_ConsoleController;
+	[SerializeField] SocketObserver m_SocketObserver;
 
 	State m_State;
-	SocketObserver m_SocketObserver;
 
 	void Awake ()
 	{
 		m_State = State.ExpectedAddress;
-		m_SocketObserver = new SocketObserver (1435);
 	}
 
 	public void OnClick ()
@@ -71,6 +70,7 @@ public class InputController : MonoBehaviour
 		m_Placeholder = GameObject.Find ("Placeholder").GetComponent<Text> ();
 		m_Button = GameObject.Find ("Button/Text").GetComponent<Text> ();
 		m_ConsoleController = FindObjectOfType<ConsoleController> ();
+		m_SocketObserver = FindObjectOfType<SocketObserver> ();
 	}
 
 	#endif
