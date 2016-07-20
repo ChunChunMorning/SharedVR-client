@@ -64,7 +64,9 @@ public class SocketObserver : MonoBehaviour
 			{
 				var data = new byte [256];
 				m_NetworkStream.Read (data, 0, data.Length);
-				m_ConsoleController.AddMessage (Encoding.UTF8.GetString (data));
+				var text = Encoding.UTF8.GetString (data);
+				var message = text.Split (',');
+				m_ConsoleController.AddMessage (message[0], message[1]);
 
 				#if UNITY_EDITOR
 
