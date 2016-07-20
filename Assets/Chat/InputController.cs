@@ -29,7 +29,6 @@ public class InputController : MonoBehaviour
 		{
 		case State.ExpectedAddress:
 			m_SocketObserver.Connect (m_InputField.text);
-			m_ConsoleController.AddMessage ("Connection is started!");
 			m_Placeholder.text = "Write message.";
 			m_Button.text = "Send";
 			m_State = State.ExpectedMessage;
