@@ -1120,6 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PortNumber: 1435
+  m_DetectTime: 3
   m_ConsoleController: {fileID: 1227364615}
 --- !u!4 &2143477501
 Transform:

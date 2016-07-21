@@ -8,10 +8,12 @@ using System.Threading;
 public class SocketObserver : MonoBehaviour
 {
 	[SerializeField] int m_PortNumber = 1435;
+	[SerializeField] float m_DetectTime = 55.0f;
 	[SerializeField] ConsoleController m_ConsoleController;
 	TcpClient m_Client;
 	NetworkStream m_NetworkStream;
 	Coroutine m_ReadingCoroutine;
+	float m_SocketBlankTime;
 
 	void OnDestroy ()
 	{
@@ -32,6 +34,7 @@ public class SocketObserver : MonoBehaviour
 
 		m_NetworkStream = m_Client.GetStream ();
 		m_ReadingCoroutine = StartCoroutine (Read());
+		StartCoroutine (DetectDisconnection ());
 	}
 
 	public void Write (string text)
@@ -39,11 +42,11 @@ public class SocketObserver : MonoBehaviour
 		var data = Encoding.UTF8.GetBytes (text + '\n');
 		m_NetworkStream.Write (data, 0, data.Length);
 		m_NetworkStream.Flush ();
+		m_SocketBlankTime = 0.0f;
 	}
 
 	public void Disconnect ()
 	{
-		Write ("quit");
 		m_Client.Close ();
 		StopCoroutine (m_ReadingCoroutine);
 		m_Client = null;
@@ -77,6 +80,25 @@ public class SocketObserver : MonoBehaviour
 
 			yield return null;
 		}
+	}
+
+	IEnumerator DetectDisconnection ()
+	{
+		m_SocketBlankTime = 0.0f;
+
+		while (m_Client.Connected)
+		{
+			m_SocketBlankTime += Time.deltaTime;
+
+			if (m_SocketBlankTime > m_DetectTime)
+			{
+				Write ("");
+			}
+
+			yield return null;
+		}
+
+		Debug.Log ("Detect End");
 	}
 
 	#if UNITY_EDITOR
