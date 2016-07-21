@@ -14,12 +14,6 @@ public class SocketObserver : MonoBehaviour
 	TcpClient m_Client;
 	NetworkStream m_NetworkStream;
 
-	void OnDestroy ()
-	{
-		if (m_Client != null)
-			Disconnect ();
-	}
-
 	public void Connect (string address)
 	{
 		m_Client = new TcpClient ();
@@ -61,6 +55,7 @@ public class SocketObserver : MonoBehaviour
 		m_Client.Close ();
 		m_Client = null;
 		m_NetworkStream = null;
+		m_ConsoleController.AddMessage ("Disconnect.");
 
 		#if UNITY_EDITOR
 

@@ -9,7 +9,7 @@ public class ConsoleController : MonoBehaviour
 
 	public void AddMessage (string text)
 	{
-		CreateMessage ("System: " + text);
+		CreateMessage ("system: " + text);
 	}
 
 	public void AddMessage (string name, string text)
