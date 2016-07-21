@@ -1,23 +1,22 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Text;
+﻿using System.Collections;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
+using System.Text;
+using UnityEngine;
 
 public class SocketObserver : MonoBehaviour
 {
 	[SerializeField] int m_PortNumber = 1435;
 	[SerializeField] float m_DetectTime = 55.0f;
 	[SerializeField] ConsoleController m_ConsoleController;
+	float m_NoWritingTime;
 	TcpClient m_Client;
 	NetworkStream m_NetworkStream;
-	Coroutine m_ReadingCoroutine;
-	float m_SocketBlankTime;
 
 	void OnDestroy ()
 	{
-		if (m_Client != null && m_Client.Connected)
+		if (m_Client != null)
 			Disconnect ();
 	}
 
@@ -25,30 +24,41 @@ public class SocketObserver : MonoBehaviour
 	{
 		m_Client = new TcpClient ();
 		m_Client.Connect (IPAddress.Parse (address), m_PortNumber);
+		m_NetworkStream = m_Client.GetStream ();
+		StartCoroutine (Read());
+		StartCoroutine (DetectDisconnection ());
 
 		#if UNITY_EDITOR
 
-		Debug.Log ("Connection is started on " + m_PortNumber + '.');
+		Debug.Log ("Connect on " + m_PortNumber + '.');
 
 		#endif
-
-		m_NetworkStream = m_Client.GetStream ();
-		m_ReadingCoroutine = StartCoroutine (Read());
-		StartCoroutine (DetectDisconnection ());
 	}
 
 	public void Write (string text)
 	{
-		var data = Encoding.UTF8.GetBytes (text + '\n');
-		m_NetworkStream.Write (data, 0, data.Length);
-		m_NetworkStream.Flush ();
-		m_SocketBlankTime = 0.0f;
+		try
+		{
+			var data = Encoding.UTF8.GetBytes (text + '\n');
+			m_NetworkStream.Write (data, 0, data.Length);
+			m_NetworkStream.Flush ();
+			m_NoWritingTime = 0.0f;
+
+			#if UNITY_EDITOR
+
+			Debug.Log ("Send: " + text);
+
+			#endif
+		}
+		catch (IOException)
+		{
+			Disconnect ();
+		}
 	}
 
 	public void Disconnect ()
 	{
 		m_Client.Close ();
-		StopCoroutine (m_ReadingCoroutine);
 		m_Client = null;
 		m_NetworkStream = null;
 
@@ -61,7 +71,7 @@ public class SocketObserver : MonoBehaviour
 
 	IEnumerator Read ()
 	{
-		while (m_Client.Connected)
+		while (m_Client != null)
 		{
 			if (m_Client.Available > 0)
 			{
@@ -73,7 +83,7 @@ public class SocketObserver : MonoBehaviour
 
 				#if UNITY_EDITOR
 
-				Debug.Log (Encoding.UTF8.GetString (data) + "is Coming!");
+				Debug.Log ("Receive: " + text);
 
 				#endif
 			}
@@ -84,21 +94,19 @@ public class SocketObserver : MonoBehaviour
 
 	IEnumerator DetectDisconnection ()
 	{
-		m_SocketBlankTime = 0.0f;
+		m_NoWritingTime = 0.0f;
 
-		while (m_Client.Connected)
+		while (m_Client != null)
 		{
-			m_SocketBlankTime += Time.deltaTime;
+			m_NoWritingTime += Time.deltaTime;
 
-			if (m_SocketBlankTime > m_DetectTime)
+			if (m_NoWritingTime > m_DetectTime)
 			{
 				Write ("");
 			}
 
 			yield return null;
 		}
-
-		Debug.Log ("Detect End");
 	}
 
 	#if UNITY_EDITOR
