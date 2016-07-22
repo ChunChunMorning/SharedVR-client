@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -10,6 +11,7 @@ public class SocketObserver : MonoBehaviour
 	[SerializeField] int m_PortNumber = 1435;
 	[SerializeField] float m_DetectTime = 55.0f;
 	[SerializeField] ConsoleController m_ConsoleController;
+	public event Action OnDisconnect;
 	float m_NoWritingTime;
 	TcpClient m_Client;
 	NetworkStream m_NetworkStream;
@@ -56,6 +58,7 @@ public class SocketObserver : MonoBehaviour
 		m_Client = null;
 		m_NetworkStream = null;
 		m_ConsoleController.AddMessage ("Disconnect.");
+		OnDisconnect ();
 
 		#if UNITY_EDITOR
 

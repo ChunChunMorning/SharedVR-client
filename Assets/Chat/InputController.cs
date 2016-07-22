@@ -21,6 +21,7 @@ public class InputController : MonoBehaviour
 	void Awake ()
 	{
 		m_State = State.ExpectedAddress;
+		m_SocketObserver.OnDisconnect += Disconnect;
 	}
 
 	public void OnClick ()
@@ -43,10 +44,6 @@ public class InputController : MonoBehaviour
 
 			case "logout":
 				m_SocketObserver.Disconnect ();
-				m_ConsoleController.AddMessage ("Logout.");
-				m_Placeholder.text = "Write address.";
-				m_Button.text = "Connect";
-				m_State = State.ExpectedAddress;
 				break;
 
 			default:
@@ -59,6 +56,13 @@ public class InputController : MonoBehaviour
 		}
 
 		m_InputField.text = "";
+	}
+
+	public void Disconnect ()
+	{
+		m_Placeholder.text = "Write address.";
+		m_Button.text = "Connect";
+		m_State = State.ExpectedAddress;
 	}
 
 	#if UNITY_EDITOR
