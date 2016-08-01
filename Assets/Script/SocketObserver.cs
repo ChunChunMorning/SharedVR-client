@@ -9,7 +9,6 @@ using UnityEngine;
 
 public class SocketObserver : MonoBehaviour
 {
-	[SerializeField] int m_PortNumber = 1435;
 	[SerializeField] float m_DetectTime = 55.0f;
 
 	float m_NoWritingTime;
@@ -18,17 +17,22 @@ public class SocketObserver : MonoBehaviour
 
 	public event Action OnDisconnect;
 
-	public void Connect(string address)
+	public bool Connected()
+	{
+		return m_Client != null;
+	}
+
+	public void Connect(string address, int port)
 	{
 		m_Client = new TcpClient();
-		m_Client.Connect(IPAddress.Parse(address), m_PortNumber);
+		m_Client.Connect(IPAddress.Parse(address), port);
 		m_NetworkStream = m_Client.GetStream();
 		StartCoroutine(Read());
 		StartCoroutine(DetectDisconnection());
 
 		#if UNITY_EDITOR
 
-		Debug.Log("Connect on " + m_PortNumber + '.');
+		Debug.Log("Connect on " + port + '.');
 
 		#endif
 	}
@@ -77,7 +81,6 @@ public class SocketObserver : MonoBehaviour
 				var data = new byte[256];
 				m_NetworkStream.Read(data, 0, data.Length);
 				var text = Encoding.UTF8.GetString(data);
-				var message = text.Split(',');
 
 				#if UNITY_EDITOR
 
