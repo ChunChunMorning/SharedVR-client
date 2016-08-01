@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class GazePointer : MonoBehaviour, IGvrGazePointer
 {
+	NetworkController m_NetworkController;
+
+	void Awake()
+	{
+		m_NetworkController = GameObject.Find("NetworkController").GetComponent<NetworkController>();
+	}
+
 	void OnEnable()
 	{
 		GazeInputModule.gazePointer = this;
@@ -24,7 +31,12 @@ public class GazePointer : MonoBehaviour, IGvrGazePointer
 
 	public void OnGazeDisabled() {}
 
-	public void OnGazeStart(Camera camera, GameObject targetObject, Vector3 intersectionPosition, bool isInteractive) {}
+	public void OnGazeStart(Camera camera, GameObject targetObject, Vector3 intersectionPosition, bool isInteractive)
+	{
+		var gazedObjectID = targetObject.GetComponent<GazedObject>().gazedObjectID;
+
+		m_NetworkController.TellGazedObjectID(gazedObjectID);
+	}
 
 	public void OnGazeStay(Camera camera, GameObject targetObject, Vector3 intersectionPosition, bool isInteractive) {}
 

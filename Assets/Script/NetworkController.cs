@@ -13,7 +13,7 @@ public class NetworkController : MonoBehaviour
 		m_SocketObserver.Connect(m_IPAddress, m_PortNumber);
 	}
 
-	void TellGazedObject(int gazedObjectID)
+	public void TellGazedObjectID(int gazedObjectID)
 	{
 		if (!m_SocketObserver.Connected())
 			return;

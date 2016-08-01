@@ -5,10 +5,14 @@ using UnityEngine.EventSystems;
 
 
 [RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(EventTrigger))]
-public class GazedObject : MonoBehaviour, IGvrGazeResponder
+public class GazedObject : MonoBehaviour
 {
 	[SerializeField] int m_GazedObjectID;
+
+	public int gazedObjectID
+	{
+		get { return m_GazedObjectID; }
+	}
 
 	void Awake()
 	{
@@ -19,19 +23,6 @@ public class GazedObject : MonoBehaviour, IGvrGazeResponder
 
 		#endif
 	}
-
-	#region Implement IGvrGazeResponder.
-
-	public void OnGazeEnter()
-	{
-		Debug.Log("Gaze ID: " + m_GazedObjectID);
-	}
-
-	public void OnGazeExit() {}
-
-	public void OnGazeTrigger() {}
-
-	#endregion
 
 	#if UNITY_EDITOR
 
