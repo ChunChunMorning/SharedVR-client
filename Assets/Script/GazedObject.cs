@@ -48,7 +48,7 @@ public class GazedObject : MonoBehaviour, IGvrGazeResponder
 
 		for (int i = 0; i < gazedObjects.Length; ++i)
 		{
-			gazedObjects[i].m_GazedObjectID = i;
+			gazedObjects[i].m_GazedObjectID = 100 + i;
 		}
 	}
 
