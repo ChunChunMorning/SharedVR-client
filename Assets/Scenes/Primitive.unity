@@ -180,7 +180,6 @@ GameObject:
   - 33: {fileID: 75635823}
   - 23: {fileID: 75635822}
   - 65: {fileID: 75635821}
-  - 114: {fileID: 75635820}
   - 114: {fileID: 75635819}
   m_Layer: 8
   m_Name: Cube (2)
@@ -214,36 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 105
---- !u!114 &75635820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 75635817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 75635819}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &75635821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -303,7 +272,6 @@ GameObject:
   - 33: {fileID: 117179982}
   - 23: {fileID: 117179981}
   - 65: {fileID: 117179980}
-  - 114: {fileID: 117179979}
   - 114: {fileID: 117179978}
   m_Layer: 8
   m_Name: Cube (6)
@@ -337,36 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 101
---- !u!114 &117179979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 117179976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 117179978}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &117179980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -426,7 +364,6 @@ GameObject:
   - 33: {fileID: 127881868}
   - 23: {fileID: 127881866}
   - 65: {fileID: 127881867}
-  - 114: {fileID: 127881871}
   - 114: {fileID: 127881870}
   m_Layer: 8
   m_Name: Cube
@@ -508,36 +445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 107
---- !u!114 &127881871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 127881865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 127881870}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &308052817
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +510,7 @@ GameObject:
   - 81: {fileID: 959308589}
   - 114: {fileID: 959308588}
   - 114: {fileID: 959308594}
+  - 114: {fileID: 959308595}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -714,6 +622,17 @@ MonoBehaviour:
   m_EventMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &959308595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959308587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5cde7aeef0194775bed0c06dd9b36dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1113738064
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +784,6 @@ GameObject:
   - 33: {fileID: 1311701109}
   - 23: {fileID: 1311701108}
   - 65: {fileID: 1311701107}
-  - 114: {fileID: 1311701106}
   - 114: {fileID: 1311701105}
   m_Layer: 8
   m_Name: Cube (1)
@@ -899,36 +817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 106
---- !u!114 &1311701106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1311701103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1311701105}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &1311701107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -988,7 +876,6 @@ GameObject:
   - 33: {fileID: 1534210698}
   - 23: {fileID: 1534210697}
   - 65: {fileID: 1534210696}
-  - 114: {fileID: 1534210695}
   - 114: {fileID: 1534210694}
   m_Layer: 8
   m_Name: Cube (5)
@@ -1022,36 +909,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 102
---- !u!114 &1534210695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1534210692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1534210694}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &1534210696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1111,7 +968,6 @@ GameObject:
   - 33: {fileID: 1649597641}
   - 23: {fileID: 1649597640}
   - 65: {fileID: 1649597639}
-  - 114: {fileID: 1649597638}
   - 114: {fileID: 1649597637}
   m_Layer: 8
   m_Name: Cube (4)
@@ -1145,36 +1001,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 103
---- !u!114 &1649597638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1649597635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1649597637}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &1649597639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1234,7 +1060,6 @@ GameObject:
   - 33: {fileID: 1655347256}
   - 23: {fileID: 1655347255}
   - 65: {fileID: 1655347254}
-  - 114: {fileID: 1655347253}
   - 114: {fileID: 1655347252}
   m_Layer: 8
   m_Name: Cube (3)
@@ -1268,36 +1093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 104
---- !u!114 &1655347253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1655347250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1655347252}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &1655347254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1357,7 +1152,6 @@ GameObject:
   - 33: {fileID: 1740437665}
   - 23: {fileID: 1740437664}
   - 65: {fileID: 1740437663}
-  - 114: {fileID: 1740437662}
   - 114: {fileID: 1740437661}
   m_Layer: 8
   m_Name: Cube (7)
@@ -1391,36 +1185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GazedObjectID: 100
---- !u!114 &1740437662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1740437659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1740437661}
-          m_MethodName: OnGazeEnter
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &1740437663
 BoxCollider:
   m_ObjectHideFlags: 0

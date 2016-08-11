@@ -131,7 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9619fd11e116643969f204470a9c75eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PortNumber: 1435
   m_DetectTime: 55
 --- !u!114 &1038456306
 MonoBehaviour:
@@ -144,4 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd6af7c335a24f989df933152392c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IPAddress: 127.0.0.1
+  m_PortNumber: 1435
   m_SocketObserver: {fileID: 1038456305}
