@@ -161,7 +161,7 @@ public class GvrViewer : MonoBehaviour {
   private bool electronicDisplayStabilization = false;
   /// @endcond
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
   /// Restores level head tilt in when playing in the Unity Editor after you
   /// release the Ctrl key.
   public bool autoUntiltHead = true;

@@ -11,10 +11,10 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections.Generic;
 
 /// @cond
@@ -54,7 +54,8 @@ namespace Gvr.Internal {
     private bool RemoteCommunicating {
       get {
         if (!remoteCommunicating) {
-          remoteCommunicating = EditorApplication.isRemoteConnected;
+            //remoteCommunicating = EditorApplication.isRemoteConnected;
+            remoteCommunicating = false;
         }
         return remoteCommunicating;
       }

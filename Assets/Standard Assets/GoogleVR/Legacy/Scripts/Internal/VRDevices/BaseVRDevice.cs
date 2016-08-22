@@ -240,9 +240,11 @@ namespace Gvr.Internal {
 #elif IPHONE_DEVICE
         device = new iOSDevice();
 #else
-        throw new InvalidOperationException("Unsupported device.");
+        // throw new InvalidOperationException("Unsupported device.");
+        // For Emulator.
+        device = new EditorDevice();
 #endif
-      }
+			}
       return device;
     }
   }
