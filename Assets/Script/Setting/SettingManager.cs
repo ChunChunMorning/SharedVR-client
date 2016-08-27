@@ -10,25 +10,19 @@ public class SettingManager : MonoBehaviour
 	[SerializeField] InputField m_PortNumber;
 	[SerializeField] Text m_Message;
 
-	NetworkController m_NetworkController;
 	Coroutine m_DisplayFailureCoroutine;
-
-	void Start()
-	{
-		m_NetworkController = FindObjectOfType<NetworkController>();
-	}
 
 	public void OnStartClicked()
 	{
 		var address = m_IPAddress.text;
 		var port = int.Parse(m_PortNumber.text);
 
-		m_NetworkController.TryConnect(address, port, OnSuccess, OnFailure);
+		NetworkController.Instance.TryConnect(address, port, OnSuccess, OnFailure);
 	}
 
 	private void OnSuccess()
 	{
-		Debug.Log("Success");
+		GvrViewer.Instance.VRModeEnabled = m_VRMode.isOn;
 	}
 
 	private void OnFailure()

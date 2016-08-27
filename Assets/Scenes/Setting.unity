@@ -1428,7 +1428,7 @@ GameObject:
   - 222: {fileID: 2026499680}
   - 114: {fileID: 2026499679}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1630,6 +1630,7 @@ MonoBehaviour:
   m_VRMode: {fileID: 1665893247}
   m_IPAddress: {fileID: 1985904307}
   m_PortNumber: {fileID: 1303656756}
+  m_Message: {fileID: 2026499679}
 --- !u!4 &2131467857
 Transform:
   m_ObjectHideFlags: 0
