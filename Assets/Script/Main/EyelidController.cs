@@ -26,7 +26,7 @@ public class EyelidController : MonoBehaviour
 		if (m_Coroutine != null)
 			StopCoroutine(m_Coroutine);
 
-		StartCoroutine(MoveEyelidsCoroutine(m_OpenedUpperEyelidY, m_OpenedLowerEyelidY, time, onFinish));
+		m_Coroutine = StartCoroutine(MoveEyelidsCoroutine(m_OpenedUpperEyelidY, m_OpenedLowerEyelidY, time, onFinish));
 	}
 
 	public void Close(float time, Action onFinish)
@@ -34,7 +34,7 @@ public class EyelidController : MonoBehaviour
 		if (m_Coroutine != null)
 			StopCoroutine(m_Coroutine);
 
-		StartCoroutine(MoveEyelidsCoroutine(0.0f, 0.0f, time, onFinish));
+		m_Coroutine = StartCoroutine(MoveEyelidsCoroutine(0.0f, 0.0f, time, onFinish));
 	}
 
 	private IEnumerator MoveEyelidsCoroutine(float upperGoal, float lowerGoal, float time, Action onFinish)
