@@ -360,13 +360,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1038456303}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd6af7c335a24f989df933152392c64, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a9495d4b57e84872aaa746d0c185c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IPAddress: 127.0.0.1
-  m_PortNumber: 1435
   m_SocketObserver: {fileID: 1038456305}
 --- !u!1 &1113738064
 GameObject:

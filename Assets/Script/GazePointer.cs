@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class GazePointer : MonoBehaviour, IGvrGazePointer
 {
-	NetworkController m_NetworkController;
+	NetworkManager m_NetworkController;
 
 	void Awake()
 	{
-		m_NetworkController = GameObject.Find("NetworkController").GetComponent<NetworkController>();
+		m_NetworkController = GameObject.Find("NetworkController").GetComponent<NetworkManager>();
 	}
 
 	void OnEnable()

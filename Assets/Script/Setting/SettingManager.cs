@@ -17,7 +17,7 @@ public class SettingManager : MonoBehaviour
 		var address = m_IPAddress.text;
 		var port = int.Parse(m_PortNumber.text);
 
-		NetworkController.Instance.TryConnect(address, port, OnSuccess, OnFailure);
+		NetworkManager.Instance.TryConnect(address, port, OnSuccess, OnFailure);
 	}
 
 	private void OnSuccess()

@@ -3,21 +3,21 @@ using System.Collections;
 ﻿using UnityEngine;
 
 
-public class NetworkController : MonoBehaviour
+public class NetworkManager : MonoBehaviour
 {
 	[SerializeField]
 	private SocketObserver m_SocketObserver;
 
-	private static NetworkController instance = null;
+	private static NetworkManager instance = null;
 
-	public static NetworkController Instance
+	public static NetworkManager Instance
 	{
 		get
 		{
 #if UNITY_EDITOR
 			if (instance == null && !Application.isPlaying)
 			{
-				instance = FindObjectOfType<NetworkController>();
+				instance = FindObjectOfType<NetworkManager>();
 			}
 #endif
 			if (instance == null)
