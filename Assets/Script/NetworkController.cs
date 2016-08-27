@@ -8,7 +8,7 @@ public class NetworkController : MonoBehaviour
 	[SerializeField] int m_PortNumber = 1435;
 	[SerializeField] SocketObserver m_SocketObserver;
 
-	void Start()
+	public void TryConnect()
 	{
 		m_SocketObserver.Connect(m_IPAddress, m_PortNumber);
 	}
