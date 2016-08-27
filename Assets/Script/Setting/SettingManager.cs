@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 
 public class SettingManager : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class SettingManager : MonoBehaviour
 	private void OnSuccess()
 	{
 		GvrViewer.Instance.VRModeEnabled = m_VRMode.isOn;
+
+		FindObjectOfType<GazeInputModule>().enabled = true;
+		FindObjectOfType<StandaloneInputModule>().enabled = false;
+		SceneManager.UnloadScene("Setting");
+		SceneManager.LoadScene("Primitive", LoadSceneMode.Additive);
 	}
 
 	private void OnFailure()
