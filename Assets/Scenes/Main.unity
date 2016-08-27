@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 720154517}
+  - 114: {fileID: 720154518}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -125,6 +126,17 @@ Transform:
   - {fileID: 1038456304}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &720154518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 720154516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5531c791687664142b43cabe765dfb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &946975180
 Prefab:
   m_ObjectHideFlags: 0
