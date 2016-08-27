@@ -375,8 +375,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1113738068}
   - 114: {fileID: 1113738067}
-  - 114: {fileID: 1113738066}
   - 114: {fileID: 1113738065}
+  - 114: {fileID: 1113738066}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
