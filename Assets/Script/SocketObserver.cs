@@ -22,19 +22,31 @@ public class SocketObserver : MonoBehaviour
 		return m_Client != null;
 	}
 
-	public void Connect(string address, int port)
+	public bool Connect(string address, int port)
 	{
-		m_Client = new TcpClient();
-		m_Client.Connect(IPAddress.Parse(address), port);
-		m_NetworkStream = m_Client.GetStream();
-		StartCoroutine(Read());
-		StartCoroutine(DetectDisconnection());
+		try
+		{
+			m_Client = new TcpClient();
+			m_Client.Connect(IPAddress.Parse(address), port);
+			m_NetworkStream = m_Client.GetStream();
+			StartCoroutine(Read());
+			StartCoroutine(DetectDisconnection());
+		}
+		catch (SocketException)
+		{
+			m_Client = null;
+			m_NetworkStream = null;
+
+			return false;
+		}
 
 		#if UNITY_EDITOR
 
 		Debug.Log("Connect on " + port + '.');
 
 		#endif
+
+		return true;
 	}
 
 	public void Disconnect()
