@@ -27,8 +27,7 @@ public class SettingManager : MonoBehaviour
 
 		FindObjectOfType<GazeInputModule>().enabled = true;
 		FindObjectOfType<StandaloneInputModule>().enabled = false;
-		SceneManager.UnloadScene("Setting");
-		SceneManager.LoadScene("Primitive", LoadSceneMode.Additive);
+		FindObjectOfType<GameController>().SwitchScene("Setting", "Primitive", 0.5f);
 	}
 
 	private void OnFailure()

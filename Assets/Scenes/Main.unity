@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5531c791687664142b43cabe765dfb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EyelidController: {fileID: 571645213}
 --- !u!1001 &946975180
 Prefab:
   m_ObjectHideFlags: 0
