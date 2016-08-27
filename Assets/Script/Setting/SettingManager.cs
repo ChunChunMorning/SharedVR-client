@@ -18,7 +18,20 @@ public class SettingManager : MonoBehaviour
 
 	public void OnStartClicked()
 	{
-		m_NetworkController.TryConnect();
+		var address = m_IPAddress.text;
+		var port = int.Parse(m_PortNumber.text);
+
+		m_NetworkController.TryConnect(address, port, OnSuccess, OnFailure);
+	}
+
+	private void OnSuccess()
+	{
+		Debug.Log("Success");
+	}
+
+	private void OnFailure()
+	{
+		Debug.Log("Failure");
 	}
 
 	#if UNITY_EDITOR

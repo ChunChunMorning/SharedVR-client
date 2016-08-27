@@ -1,16 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 ﻿using UnityEngine;
 
 
 public class NetworkController : MonoBehaviour
 {
-	[SerializeField] string m_IPAddress = "127.0.0.1";
-	[SerializeField] int m_PortNumber = 1435;
 	[SerializeField] SocketObserver m_SocketObserver;
 
-	public void TryConnect()
+	public void TryConnect(string ipAddress, int portNumber, Action onSuccess, Action onFailure)
 	{
-		m_SocketObserver.Connect(m_IPAddress, m_PortNumber);
+		var success = m_SocketObserver.Connect(ipAddress, portNumber);
+
+		if (success)
+		{
+			onSuccess();
+		}
+		else
+		{
+			onFailure();
+		}
 	}
 
 	public void TellGazedObjectID(int gazedObjectID)
