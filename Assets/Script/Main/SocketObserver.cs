@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -14,6 +15,7 @@ public class SocketObserver : MonoBehaviour
 	float m_NoWritingTime;
 	TcpClient m_Client;
 	NetworkStream m_NetworkStream;
+	Queue<string> m_ReceivingData;
 
 	public event Action OnDisconnect;
 
@@ -29,6 +31,7 @@ public class SocketObserver : MonoBehaviour
 			m_Client = new TcpClient();
 			m_Client.Connect(IPAddress.Parse(address), port);
 			m_NetworkStream = m_Client.GetStream();
+			m_ReceivingData = new Queue<string>();
 			StartCoroutine(Read());
 			StartCoroutine(DetectDisconnection());
 		}
@@ -40,12 +43,6 @@ public class SocketObserver : MonoBehaviour
 			return false;
 		}
 
-		#if UNITY_EDITOR
-
-		Debug.Log("Connect on " + port + '.');
-
-		#endif
-
 		return true;
 	}
 
@@ -54,13 +51,8 @@ public class SocketObserver : MonoBehaviour
 		m_Client.Close();
 		m_Client = null;
 		m_NetworkStream = null;
+		m_ReceivingData = null;
 		OnDisconnect();
-
-		#if UNITY_EDITOR
-
-		Debug.Log("Disconnect.");
-
-		#endif
 	}
 
 	public void Write(string text)
@@ -92,13 +84,12 @@ public class SocketObserver : MonoBehaviour
 			{
 				var data = new byte[256];
 				m_NetworkStream.Read(data, 0, data.Length);
-				var text = Encoding.UTF8.GetString(data);
+				var lines = Encoding.UTF8.GetString(data).Split('\n');
 
-				#if UNITY_EDITOR
-
-				Debug.Log("Receive: " + text);
-
-				#endif
+				foreach (var line in lines)
+				{
+					m_ReceivingData.Enqueue(line);
+				}
 			}
 
 			yield return null;
