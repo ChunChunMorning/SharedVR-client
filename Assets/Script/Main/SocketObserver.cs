@@ -24,6 +24,11 @@ public class SocketObserver : MonoBehaviour
 		get { return m_Client != null; }
 	}
 
+	public int count
+	{
+		get { return m_ReceivingData.Count; }
+	}
+
 	public bool Connect(string address, int port)
 	{
 		try
@@ -74,6 +79,11 @@ public class SocketObserver : MonoBehaviour
 		{
 			Disconnect();
 		}
+	}
+
+	public string ReadLine()
+	{
+		return m_ReceivingData.Dequeue();
 	}
 
 	IEnumerator Read()
