@@ -10,6 +10,8 @@ public class NetworkManager : MonoBehaviour
 
 	private static NetworkManager instance = null;
 
+	private int m_MyID;
+
 	public static NetworkManager Instance
 	{
 		get
@@ -37,6 +39,17 @@ public class NetworkManager : MonoBehaviour
 		{
 			Debug.LogError("There are two instance!");
 			DestroyImmediate(this);
+		}
+	}
+
+	void Update()
+	{
+		if (!m_SocketObserver.isConnected)
+			return;
+
+		while (m_SocketObserver.count > 0)
+		{
+			Debug.Log(m_SocketObserver.ReadLine());
 		}
 	}
 

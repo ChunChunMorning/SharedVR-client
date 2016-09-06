@@ -96,9 +96,12 @@ public class SocketObserver : MonoBehaviour
 				m_NetworkStream.Read(data, 0, data.Length);
 				var lines = Encoding.UTF8.GetString(data).Split('\n');
 
-				foreach (var line in lines)
+				// Last Element is Empty.
+				var limit = lines.Length - 1;
+
+				for (var i = 0; i < limit; i++)
 				{
-					m_ReceivingData.Enqueue(line);
+					m_ReceivingData.Enqueue(lines[i]);
 				}
 			}
 
