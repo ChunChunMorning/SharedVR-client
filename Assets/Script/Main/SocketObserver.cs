@@ -17,9 +17,9 @@ public class SocketObserver : MonoBehaviour
 
 	public event Action OnDisconnect;
 
-	public bool Connected()
+	public bool isConnected
 	{
-		return m_Client != null;
+		get { return m_Client != null; }
 	}
 
 	public bool Connect(string address, int port)

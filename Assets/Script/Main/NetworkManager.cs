@@ -56,7 +56,7 @@ public class NetworkManager : MonoBehaviour
 
 	public void TellGazedObjectID(int gazedObjectID)
 	{
-		if (!m_SocketObserver.Connected())
+		if (!m_SocketObserver.isConnected)
 			return;
 
 		m_SocketObserver.Write("gaze," + gazedObjectID);
