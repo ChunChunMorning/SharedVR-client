@@ -49,7 +49,25 @@ public class NetworkManager : MonoBehaviour
 
 		while (m_SocketObserver.count > 0)
 		{
-			Debug.Log(m_SocketObserver.ReadLine());
+			var args = m_SocketObserver.ReadLine().Split(',');
+
+			switch (args[0])
+			{
+				case "you":
+					m_MyID = int.Parse(args[1]);
+					break;
+
+				case "add":
+					// Add User.
+					break;
+
+				case "erase":
+					// Erase User.
+					break;
+
+				default:
+					break;
+			}
 		}
 	}
 
