@@ -2,5 +2,8 @@
 
 public class User : MonoBehaviour
 {
-	public int id;
+	public int id
+	{
+		get; set;
+	}
 }

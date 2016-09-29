@@ -9,11 +9,12 @@ public class NetworkManager : MonoBehaviour
 	private SocketObserver m_SocketObserver;
 
 	[SerializeField]
+	private User m_User;
+
+	[SerializeField]
 	private GameObject m_DummyUser;
 
 	private static NetworkManager instance = null;
-
-	private int m_MyID;
 
 	public static NetworkManager Instance
 	{
@@ -57,7 +58,7 @@ public class NetworkManager : MonoBehaviour
 			switch (args[1])
 			{
 				case "you":
-					m_MyID = int.Parse(args[0]);
+					m_User.id = int.Parse(args[0]);
 					break;
 
 				case "add":
