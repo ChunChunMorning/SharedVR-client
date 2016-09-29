@@ -1,5 +1,4 @@
-﻿using System;
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 
 public class PersonalSpace : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class PersonalSpace : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log(m_User.id + " is triggered!");
 		var otherUser = other.GetComponent<User>();
 
 		if (otherUser == null) return;
@@ -22,8 +20,9 @@ public class PersonalSpace : MonoBehaviour
 	{
 		var direction = transform.root.position - user.transform.root.position;
 		direction = direction == Vector3.zero ? -transform.root.forward : direction.normalized;
-		Debug.Log(m_User.id + " 's direction is " + direction);
-		transform.root.position = user.transform.root.position + direction * (GetComponent<SphereCollider>().radius + float.Epsilon);
+		transform.root.position =
+			user.transform.root.position +
+			direction * (GetComponent<SphereCollider>().radius + float.Epsilon);
 	}
 
 #if UNITY_EDITOR
