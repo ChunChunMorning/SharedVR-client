@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41be43c7e13244c46852002003c7b924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_User: {fileID: 1552567771}
 --- !u!135 &424072656
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -592,7 +593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SocketObserver: {fileID: 1038456305}
-  m_DummyUser: {fileID: 0}
+  m_User: {fileID: 1552567771}
+  m_DummyUser: {fileID: 1000010017158500, guid: a77b022ca34644c91b638123abf14ff1,
+    type: 2}
 --- !u!1 &1113738064
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d168aae832869488fbb5d0390db053ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
 --- !u!54 &1552567772
 Rigidbody:
   m_ObjectHideFlags: 0

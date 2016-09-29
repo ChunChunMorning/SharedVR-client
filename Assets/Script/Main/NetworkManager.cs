@@ -106,6 +106,7 @@ public class NetworkManager : MonoBehaviour
 	void Reset()
 	{
 		m_SocketObserver = GetComponent<SocketObserver>();
+		m_User = Camera.main.transform.GetChild(0).GetComponent<User>();
 	}
 #endif
 }
