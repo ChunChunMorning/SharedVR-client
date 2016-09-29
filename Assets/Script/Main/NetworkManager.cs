@@ -8,6 +8,9 @@ public class NetworkManager : MonoBehaviour
 	[SerializeField]
 	private SocketObserver m_SocketObserver;
 
+	[SerializeField]
+	private GameObject m_DummyUser;
+
 	private static NetworkManager instance = null;
 
 	private int m_MyID;
@@ -51,14 +54,19 @@ public class NetworkManager : MonoBehaviour
 		{
 			var args = m_SocketObserver.ReadLine().Split(',');
 
-			switch (args[0])
+			switch (args[1])
 			{
 				case "you":
-					m_MyID = int.Parse(args[1]);
+					m_MyID = int.Parse(args[0]);
 					break;
 
 				case "add":
-					// Add User.
+					var dummyUser = (GameObject)Instantiate(
+										m_DummyUser,
+										new Vector3(float.Parse(args[2]), float.Parse(args[3]), float.Parse(args[4])),
+										Quaternion.identity
+									);
+					dummyUser.GetComponent<User>().id = int.Parse(args[0]);
 					break;
 
 				case "erase":

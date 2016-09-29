@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SocketObserver: {fileID: 1038456305}
+  m_DummyUser: {fileID: 0}
 --- !u!1 &1113738064
 GameObject:
   m_ObjectHideFlags: 0
