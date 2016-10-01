@@ -4,7 +4,7 @@
 public class UserManager : MonoBehaviour
 {
 	[SerializeField]
-	private User m_User;
+	private MainUser m_MainUser;
 
 	[SerializeField]
 	private GameObject m_DummyUser;
@@ -34,9 +34,9 @@ public class UserManager : MonoBehaviour
 		get { return instance != null; }
 	}
 
-	public User MainUser
+	public MainUser MainUser
 	{
-		get { return m_User; }
+		get { return m_MainUser; }
 	}
 
 	void Awake()
@@ -62,7 +62,7 @@ public class UserManager : MonoBehaviour
 
 	void Reset()
 	{
-		
+		m_MainUser = transform.GetChild(0).GetComponent<MainUser>();
 	}
 
 #endif
