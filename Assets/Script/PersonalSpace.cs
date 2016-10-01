@@ -18,10 +18,10 @@ public class PersonalSpace : MonoBehaviour
 
 	private void OnInvaded(User user)
 	{
-		var direction = transform.root.position - user.transform.root.position;
-		direction = direction == Vector3.zero ? -transform.root.forward : direction.normalized;
-		transform.root.position =
-			user.transform.root.position +
+		var direction = m_User.transform.position - user.transform.position;
+		direction = direction == Vector3.zero ? -m_User.transform.forward : direction.normalized;
+		m_User.transform.position =
+			user.transform.position +
 			direction * (GetComponent<SphereCollider>().radius + float.Epsilon);
 	}
 
