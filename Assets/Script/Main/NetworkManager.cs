@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections;
 ﻿using UnityEngine;
-
 
 public class NetworkManager : MonoBehaviour
 {
 	[SerializeField]
 	private SocketObserver m_SocketObserver;
-
-	[SerializeField]
-	private User m_User;
-
-	[SerializeField]
-	private GameObject m_DummyUser;
 
 	private static NetworkManager instance = null;
 
@@ -48,7 +40,7 @@ public class NetworkManager : MonoBehaviour
 
 	void Update()
 	{
-		if (!m_SocketObserver.isConnected)
+		if (!m_SocketObserver.isConnected || !UserManager.IsReady)
 			return;
 
 		while (m_SocketObserver.count > 0)
@@ -58,16 +50,14 @@ public class NetworkManager : MonoBehaviour
 			switch (args[1])
 			{
 				case "you":
-					m_User.id = int.Parse(args[0]);
+					UserManager.Instance.User.id = int.Parse(args[0]);
 					break;
 
 				case "add":
-					var dummyUser = (GameObject)Instantiate(
-										m_DummyUser,
-										new Vector3(float.Parse(args[2]), float.Parse(args[3]), float.Parse(args[4])),
-										Quaternion.identity
-									);
-					dummyUser.GetComponent<User>().id = int.Parse(args[0]);
+					UserManager.Instance.Add(
+						int.Parse(args[0]),
+						new Vector3(float.Parse(args[2]), float.Parse(args[3]), float.Parse(args[4]))
+					);
 					break;
 
 				case "erase":
@@ -106,7 +96,6 @@ public class NetworkManager : MonoBehaviour
 	void Reset()
 	{
 		m_SocketObserver = GetComponent<SocketObserver>();
-		m_User = Camera.main.transform.GetChild(0).GetComponent<User>();
 	}
 #endif
 }
