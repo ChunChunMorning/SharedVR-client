@@ -50,7 +50,7 @@ public class NetworkManager : MonoBehaviour
 			switch (args[1])
 			{
 				case "you":
-					UserManager.Instance.MainUser.id = int.Parse(args[0]);
+					UserManager.Instance.MainUser.ID = int.Parse(args[0]);
 					break;
 
 				case "add":

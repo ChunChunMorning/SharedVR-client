@@ -2,8 +2,12 @@
 
 public class User : MonoBehaviour
 {
-	public int id
+	[SerializeField]
+	private int id;
+
+	public int ID
 	{
-		get; set;
+		get { return id; }
+		set { id = value; }
 	}
 }

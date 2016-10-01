@@ -12,7 +12,7 @@ public class PersonalSpace : MonoBehaviour
 		if (otherUser == null) return;
 
 		// Young ID User invade.
-		if (m_User.id > otherUser.id)
+		if (m_User.ID > otherUser.ID)
 			OnInvaded(otherUser);
 	}
 
