@@ -34,7 +34,7 @@ public class UserManager : MonoBehaviour
 		get { return instance != null; }
 	}
 
-	public User User
+	public User MainUser
 	{
 		get { return m_User; }
 	}
