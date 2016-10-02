@@ -62,11 +62,17 @@ public class NetworkManager : MonoBehaviour
 					break;
 
 				case "gaze":
-					UserManager.Instance.Get(int.Parse(args[0]))
-						.LookAt(GazedObjectManager.Instance.Get(int.Parse(args[2])).transform);
-					break;
-
-				default:
+					try
+					{
+						var user = UserManager.Instance.Get(int.Parse(args[0]));
+						user.LookAt(GazedObjectManager.Instance.Get(int.Parse(args[2])).transform);
+					}
+					catch (NullReferenceException)
+					{
+#if UNITY_EDITOR
+						Debug.LogWarning(int.Parse(args[0]) + " see " + int.Parse(args[2]) + " ghost!");
+#endif
+					}
 					break;
 			}
 		}

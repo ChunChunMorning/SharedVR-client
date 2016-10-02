@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 105
+  m_GazedObjectID: 2147483647
 --- !u!65 &75635821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 101
+  m_GazedObjectID: 2147483646
 --- !u!65 &117179980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 107
+  m_GazedObjectID: 2147483645
 --- !u!1 &308052817
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ Transform:
   m_Children:
   - {fileID: 1552567770}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1135765815
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!114 &1135765817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,7 +682,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &1311701103
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 106
+  m_GazedObjectID: 2147483644
 --- !u!65 &1311701107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 102
+  m_GazedObjectID: 2147483643
 --- !u!65 &1534210696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 103
+  m_GazedObjectID: 2147483642
 --- !u!65 &1649597639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 104
+  m_GazedObjectID: 2147483641
 --- !u!65 &1655347254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0666b419408d64927871bba590d8198b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GazedObjectID: 100
+  m_GazedObjectID: 2147483640
 --- !u!65 &1740437663
 BoxCollider:
   m_ObjectHideFlags: 0

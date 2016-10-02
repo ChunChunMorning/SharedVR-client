@@ -26,6 +26,12 @@ public class DummyUser : User
 		m_Target = target;
 	}
 
+	public void Remove()
+	{
+		GazedObjectManager.Instance.Remove(gazedObjectID);
+		Destroy(gameObject);
+	}
+
 #if UNITY_EDITOR
 	void Reset()
 	{

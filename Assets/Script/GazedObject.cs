@@ -37,7 +37,7 @@ public class GazedObject : GazedBehaviour
 
 		for (int i = 0; i < gazedObjects.Length; ++i)
 		{
-			gazedObjects[i].m_GazedObjectID = 100 + i;
+			gazedObjects[i].m_GazedObjectID = int.MaxValue - i;
 		}
 	}
 #endif

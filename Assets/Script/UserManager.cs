@@ -65,12 +65,15 @@ public class UserManager : MonoBehaviour
 
 	public void Erase(int id)
 	{
-		Destroy(m_DummyUsers[id].gameObject);
 		m_DummyUsers.Remove(id);
+		m_DummyUsers[id].Remove();
 	}
 
 	public DummyUser Get(int id)
 	{
+		if (!m_DummyUsers.ContainsKey(id))
+			return null;
+
 		return m_DummyUsers[id];
 	}
 
