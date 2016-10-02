@@ -1,6 +1,6 @@
 ﻿﻿using UnityEngine;
 
-public class User : MonoBehaviour
+public class User : GazedBehaviour
 {
 	[SerializeField]
 	private float m_Smoothness;
@@ -14,6 +14,11 @@ public class User : MonoBehaviour
 	}
 	[SerializeField]
 	private int id;
+
+	public override int gazedObjectID
+	{
+		get { return id; }
+	}
 
 	void Update()
 	{
@@ -33,4 +38,11 @@ public class User : MonoBehaviour
 	{
 		m_Target = target;
 	}
+
+#if UNITY_EDITOR
+	void Reset()
+	{
+		gameObject.layer = LayerMask.NameToLayer("GazedObject");
+	}
+#endif
 }
