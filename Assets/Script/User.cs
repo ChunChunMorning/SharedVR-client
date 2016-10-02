@@ -2,12 +2,16 @@
 
 public class User : MonoBehaviour
 {
-	[SerializeField]
-	private int id;
-
 	public int ID
 	{
 		get { return id; }
 		set { id = value; }
+	}
+	[SerializeField]
+	private int id;
+
+	public void LookAt(Transform target)
+	{
+		transform.LookAt(target);
 	}
 }

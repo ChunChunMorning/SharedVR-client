@@ -62,11 +62,9 @@ public class NetworkManager : MonoBehaviour
 					break;
 
 				case "gaze":
-					Debug.Log(
-						UserManager.Instance.Get(int.Parse(args[0])) +
-						" gaze at " +
-						GazedObjectManager.Instance.Get(int.Parse(args[2]))
-					);
+					UserManager.Instance.Get(
+						int.Parse(args[0])
+					).LookAt(GazedObjectManager.Instance.Get(int.Parse(args[2])).transform);
 					break;
 
 				default:
