@@ -3,7 +3,7 @@
 
 public class GazedObjectManager : MonoBehaviour
 {
-	private Dictionary<int, GazedObject> m_GazedObjects;
+	private Dictionary<int, GazedBehaviour> m_GazedObjects;
 
 	public static GazedObjectManager Instance
 	{
@@ -35,10 +35,10 @@ public class GazedObjectManager : MonoBehaviour
 			DestroyImmediate(this);
 		}
 
-		m_GazedObjects = new Dictionary<int, GazedObject>();
+		m_GazedObjects = new Dictionary<int, GazedBehaviour>();
 	}
 
-	public void Add(int id, GazedObject gazedObject)
+	public void Add(int id, GazedBehaviour gazedObject)
 	{
 		m_GazedObjects[id] = gazedObject;
 	}
@@ -48,7 +48,7 @@ public class GazedObjectManager : MonoBehaviour
 		m_GazedObjects.Remove(id);
 	}
 
-	public GazedObject Get(int id)
+	public GazedBehaviour Get(int id)
 	{
 		return m_GazedObjects[id];
 	}

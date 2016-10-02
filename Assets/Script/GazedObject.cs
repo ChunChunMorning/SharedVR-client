@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class GazedObject : MonoBehaviour
+public class GazedObject : GazedBehaviour
 {
-	public int gazedObjectID
+	public override int gazedObjectID
 	{
 		get { return m_GazedObjectID; }
 	}

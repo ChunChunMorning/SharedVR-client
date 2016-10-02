@@ -33,7 +33,7 @@ public class GazePointer : MonoBehaviour, IGvrGazePointer
 
 	public void OnGazeStart(Camera camera, GameObject targetObject, Vector3 intersectionPosition, bool isInteractive)
 	{
-		var gazedObjectID = targetObject.GetComponent<GazedObject>().gazedObjectID;
+		var gazedObjectID = targetObject.GetComponent<GazedBehaviour>().gazedObjectID;
 
 		m_NetworkController.TellGazedObjectID(gazedObjectID);
 	}
