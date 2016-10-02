@@ -54,14 +54,19 @@ public class NetworkManager : MonoBehaviour
 					break;
 
 				case "add":
-					UserManager.Instance.Add(
-						int.Parse(args[0]),
-						new Vector3(float.Parse(args[2]), float.Parse(args[3]), float.Parse(args[4]))
-					);
+					UserManager.Instance.Add(int.Parse(args[0]));
 					break;
 
 				case "erase":
 					UserManager.Instance.Erase(int.Parse(args[0]));
+					break;
+
+				case "gaze":
+					Debug.Log(
+						UserManager.Instance.Get(int.Parse(args[0])) +
+						" gaze at " +
+						GazedObjectManager.Instance.Get(int.Parse(args[2]))
+					);
 					break;
 
 				default:

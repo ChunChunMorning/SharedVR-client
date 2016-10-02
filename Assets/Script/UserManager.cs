@@ -1,4 +1,5 @@
-﻿﻿using UnityEngine;
+﻿using System.Collections.Generic;
+﻿using UnityEngine;
 
 public class UserManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class UserManager : MonoBehaviour
 	[SerializeField]
 	private GameObject m_DummyUser;
 
-	private static UserManager instance = null;
+	private Dictionary<int, User> m_Users;
 
 	public static UserManager Instance
 	{
@@ -27,6 +28,7 @@ public class UserManager : MonoBehaviour
 			return instance;
 		}
 	}
+	private static UserManager instance = null;
 
 	public static bool IsReady
 	{
@@ -48,26 +50,28 @@ public class UserManager : MonoBehaviour
 			Debug.LogError("There are two instance!");
 			DestroyImmediate(this);
 		}
+
+		m_Users = new Dictionary<int, User>();
 	}
 
-	public void Add(int id, Vector3 position)
+	public void Add(int id)
 	{
-		var dummyUser = (GameObject)Instantiate(m_DummyUser, position, Quaternion.identity);
-		dummyUser.GetComponent<User>().ID = id;
+		var dummyUser = (GameObject)Instantiate(m_DummyUser, Vector3.zero, Quaternion.identity);
 		dummyUser.transform.SetParent(transform);
+		var user = dummyUser.GetComponent<User>();
+		user.ID = id;
+		m_Users[id] = user;
 	}
 
 	public void Erase(int id)
 	{
-		var users = FindObjectsOfType<User>();
+		Destroy(m_Users[id].gameObject);
+		m_Users.Remove(id);
+	}
 
-		foreach (var user in users)
-		{
-			if (user.ID == id)
-			{
-				Destroy(user.gameObject);
-			}
-		}
+	public User Get(int id)
+	{
+		return m_Users[id];
 	}
 
 #if UNITY_EDITOR

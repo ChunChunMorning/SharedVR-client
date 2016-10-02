@@ -18,14 +18,9 @@ public class GazedObject : MonoBehaviour
 #endif
 	}
 
-	void OnEnable()
+	void Start()
 	{
 		GazedObjectManager.Instance.Add(m_GazedObjectID, this);
-	}
-
-	void OnDisable()
-	{
-		GazedObjectManager.Instance.Remove(m_GazedObjectID);
 	}
 
 #if UNITY_EDITOR

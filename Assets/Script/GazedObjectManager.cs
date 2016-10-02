@@ -34,6 +34,8 @@ public class GazedObjectManager : MonoBehaviour
 			Debug.LogError("There are two instance!");
 			DestroyImmediate(this);
 		}
+
+		m_GazedObjects = new Dictionary<int, GazedObject>();
 	}
 
 	public void Add(int id, GazedObject gazedObject)
