@@ -32,8 +32,8 @@ public class GazedObject : MonoBehaviour
 		m_GazedObjectID = -1;
 	}
 
-	[ContextMenu("AssignAllGameObjectID")]
-	void AssignAllGameObjectID()
+	[ContextMenu("AssignGazedObjectIDAll")]
+	void AssignGazedObjectIDAll()
 	{
 		var gazedObjects = FindObjectsOfType<GazedObject>();
 
