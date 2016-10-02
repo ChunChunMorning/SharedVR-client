@@ -10,13 +10,13 @@ public class GazedObject : GazedBehaviour
 	[SerializeField]
 	private int m_GazedObjectID;
 
+#if UNITY_EDITOR
 	void Awake()
 	{
-#if UNITY_EDITOR
 		if (m_GazedObjectID < 0)
-			Debug.Log("I don't have GazedObjectID.");
-#endif
+			Debug.LogError("I don't have GazedObjectID.");
 	}
+#endif
 
 	void Start()
 	{
