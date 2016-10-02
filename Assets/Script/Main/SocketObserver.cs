@@ -69,11 +69,9 @@ public class SocketObserver : MonoBehaviour
 			m_NetworkStream.Flush();
 			m_NoWritingTime = 0.0f;
 
-			#if UNITY_EDITOR
-
-			Debug.Log("Send: " + text);
-
-			#endif
+#if UNITY_EDITOR
+			Debug.Log("Send: " + text + "\\n");
+#endif
 		}
 		catch (IOException)
 		{
@@ -103,6 +101,10 @@ public class SocketObserver : MonoBehaviour
 				{
 					m_ReceivingData.Enqueue(lines[i]);
 				}
+
+#if UNITY_EDITOR
+				Debug.Log("Receive: " + Encoding.UTF8.GetString(data).Replace("\n", "\\n"));
+#endif
 			}
 
 			yield return null;
