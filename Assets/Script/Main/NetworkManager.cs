@@ -61,7 +61,7 @@ public class NetworkManager : MonoBehaviour
 					break;
 
 				case "erase":
-					Debug.Log("Erase:" + args[0]);
+					UserManager.Instance.Erase(int.Parse(args[0]));
 					break;
 
 				default:

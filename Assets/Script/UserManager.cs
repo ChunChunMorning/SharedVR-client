@@ -1,5 +1,4 @@
-﻿using System.Collections;
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 
 public class UserManager : MonoBehaviour
 {
@@ -58,12 +57,23 @@ public class UserManager : MonoBehaviour
 		dummyUser.transform.SetParent(transform);
 	}
 
-#if UNITY_EDITOR
+	public void Erase(int id)
+	{
+		var users = FindObjectsOfType<User>();
 
+		foreach (var user in users)
+		{
+			if (user.ID == id)
+			{
+				Destroy(user.gameObject);
+			}
+		}
+	}
+
+#if UNITY_EDITOR
 	void Reset()
 	{
 		m_MainUser = transform.GetChild(0).GetComponent<MainUser>();
 	}
-
 #endif
 }
