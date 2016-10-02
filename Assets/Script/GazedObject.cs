@@ -1,31 +1,34 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.EventSystems;
-
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class GazedObject : MonoBehaviour
 {
-	[SerializeField] int m_GazedObjectID;
-
 	public int gazedObjectID
 	{
 		get { return m_GazedObjectID; }
 	}
+	[SerializeField]
+	private int m_GazedObjectID;
 
 	void Awake()
 	{
-		#if UNITY_EDITOR
-
+#if UNITY_EDITOR
 		if (m_GazedObjectID < 0)
 			Debug.Log("I don't have GazedObjectID.");
-
-		#endif
+#endif
 	}
 
-	#if UNITY_EDITOR
+	void OnEnable()
+	{
+		GazedObjectManager.Instance.Add(m_GazedObjectID, this);
+	}
 
+	void OnDisable()
+	{
+		GazedObjectManager.Instance.Remove(m_GazedObjectID);
+	}
+
+#if UNITY_EDITOR
 	void Reset()
 	{
 		gameObject.layer = LayerMask.NameToLayer("GazedObject");
@@ -42,6 +45,5 @@ public class GazedObject : MonoBehaviour
 			gazedObjects[i].m_GazedObjectID = 100 + i;
 		}
 	}
-
-	#endif
+#endif
 }
