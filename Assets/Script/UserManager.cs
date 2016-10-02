@@ -9,7 +9,7 @@ public class UserManager : MonoBehaviour
 	[SerializeField]
 	private GameObject m_DummyUser;
 
-	private Dictionary<int, User> m_Users;
+	private Dictionary<int, DummyUser> m_DummyUsers;
 
 	public static UserManager Instance
 	{
@@ -51,27 +51,27 @@ public class UserManager : MonoBehaviour
 			DestroyImmediate(this);
 		}
 
-		m_Users = new Dictionary<int, User>();
+		m_DummyUsers = new Dictionary<int, DummyUser>();
 	}
 
 	public void Add(int id)
 	{
 		var dummyUser = (GameObject)Instantiate(m_DummyUser, Vector3.zero, Quaternion.identity);
 		dummyUser.transform.SetParent(transform);
-		var user = dummyUser.GetComponent<User>();
+		var user = dummyUser.GetComponent<DummyUser>();
 		user.ID = id;
-		m_Users[id] = user;
+		m_DummyUsers[id] = user;
 	}
 
 	public void Erase(int id)
 	{
-		Destroy(m_Users[id].gameObject);
-		m_Users.Remove(id);
+		Destroy(m_DummyUsers[id].gameObject);
+		m_DummyUsers.Remove(id);
 	}
 
-	public User Get(int id)
+	public DummyUser Get(int id)
 	{
-		return m_Users[id];
+		return m_DummyUsers[id];
 	}
 
 #if UNITY_EDITOR
