@@ -1627,6 +1627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25794679afc4345c7a5136f2bfdb8c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_NextScene: Forest
   m_VRMode: {fileID: 1665893247}
   m_IPAddress: {fileID: 1985904307}
   m_PortNumber: {fileID: 1303656756}
