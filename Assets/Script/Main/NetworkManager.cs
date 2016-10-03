@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 ﻿using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
@@ -67,10 +68,10 @@ public class NetworkManager : MonoBehaviour
 						var user = UserManager.Instance.Get(int.Parse(args[0]));
 						user.LookAt(GazedObjectManager.Instance.Get(int.Parse(args[2])).transform);
 					}
-					catch (NullReferenceException)
+					catch (KeyNotFoundException)
 					{
 #if UNITY_EDITOR
-						Debug.LogWarning(int.Parse(args[0]) + " see " + int.Parse(args[2]) + " ghost!");
+						Debug.LogWarning(int.Parse(args[0]) + " see " + int.Parse(args[2]) + ".");
 #endif
 					}
 					break;

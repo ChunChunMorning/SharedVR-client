@@ -71,9 +71,6 @@ public class UserManager : MonoBehaviour
 
 	public DummyUser Get(int id)
 	{
-		if (!m_DummyUsers.ContainsKey(id))
-			return null;
-
 		return m_DummyUsers[id];
 	}
 
