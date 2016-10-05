@@ -52,6 +52,9 @@ public class NetworkManager : MonoBehaviour
 			{
 				case "you":
 					UserManager.Instance.MainUser.ID = int.Parse(args[0]);
+					UserManager.Instance.MainUser.transform.position = new Vector3(
+						float.Parse(args[2]), float.Parse(args[3]), float.Parse(args[4])
+					);
 					break;
 
 				case "add":
