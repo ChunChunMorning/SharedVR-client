@@ -58,7 +58,10 @@ public class NetworkManager : MonoBehaviour
 					break;
 
 				case "add":
-					UserManager.Instance.Add(int.Parse(args[0]));
+					UserManager.Instance.Add(
+						int.Parse(args[0]),
+						new Vector3(float.Parse(args[2]), float.Parse(args[3]), float.Parse(args[4]))
+					);
 					break;
 
 				case "erase":

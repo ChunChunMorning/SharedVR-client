@@ -54,9 +54,9 @@ public class UserManager : MonoBehaviour
 		m_DummyUsers = new Dictionary<int, DummyUser>();
 	}
 
-	public void Add(int id)
+	public void Add(int id, Vector3 position)
 	{
-		var dummyUser = (GameObject)Instantiate(m_DummyUser, Vector3.zero, Quaternion.identity);
+		var dummyUser = (GameObject)Instantiate(m_DummyUser, position, Quaternion.identity);
 		dummyUser.transform.SetParent(transform);
 		var user = dummyUser.GetComponent<DummyUser>();
 		user.ID = id;
