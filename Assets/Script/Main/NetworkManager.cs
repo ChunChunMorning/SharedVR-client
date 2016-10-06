@@ -78,6 +78,10 @@ public class NetworkManager : MonoBehaviour
 #endif
 					}
 					break;
+
+				case "mode":
+					FindObjectOfType<GazePointer>().Mode = (args[2] == "rot") ? SynchronizeMode.Rotation : SynchronizeMode.Destination;
+					break;
 			}
 		}
 	}
@@ -102,6 +106,20 @@ public class NetworkManager : MonoBehaviour
 			return;
 
 		m_SocketObserver.Write("gaze," + gazedObjectID);
+	}
+
+	public void TellRotation(Quaternion rotation)
+	{
+		if (!m_SocketObserver.isConnected)
+			return;
+
+		m_SocketObserver.Write(
+			"rot," +
+			rotation.x + ',' +
+			rotation.y + ',' +
+			rotation.z + ',' +
+			rotation.w
+		);
 	}
 
 #if UNITY_EDITOR
