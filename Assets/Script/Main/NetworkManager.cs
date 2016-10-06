@@ -82,6 +82,18 @@ public class NetworkManager : MonoBehaviour
 				case "mode":
 					FindObjectOfType<GazePointer>().Mode = (args[2] == "rot") ? SynchronizeMode.Rotation : SynchronizeMode.Destination;
 					break;
+
+				case "rot":
+					{
+						var user = UserManager.Instance.Get(int.Parse(args[0]));
+						user.transform.rotation = new Quaternion(
+							float.Parse(args[2]),
+							float.Parse(args[3]),
+							float.Parse(args[4]),
+							float.Parse(args[5])
+						);
+					}
+					break;
 			}
 		}
 	}
