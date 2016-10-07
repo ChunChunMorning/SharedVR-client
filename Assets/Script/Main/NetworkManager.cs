@@ -87,19 +87,12 @@ public class NetworkManager : MonoBehaviour
 					break;
 
 				case "rot":
-					{
-						var rotation = new Quaternion(
-							float.Parse(args[2]),
-							float.Parse(args[3]),
-							float.Parse(args[4]),
-							float.Parse(args[5])
-						);
-
-						// Cancel X, Z element.
-						UserManager.Instance.Get(int.Parse(args[0])).transform.rotation = Quaternion.Euler(
-							0f, rotation.eulerAngles.y, 0f
-						);
-					}
+					// Cancel X, Z element.
+					UserManager.Instance.Get(int.Parse(args[0])).transform.rotation = Quaternion.Euler(
+						0f,
+						float.Parse(args[3]),
+						0f
+					);
 					break;
 			}
 		}
@@ -134,10 +127,9 @@ public class NetworkManager : MonoBehaviour
 
 		m_SocketObserver.Write(
 			"rot," +
-			rotation.x + ',' +
-			rotation.y + ',' +
-			rotation.z + ',' +
-			rotation.w
+			rotation.eulerAngles.x.ToString("##0.0#") + ',' +
+			rotation.eulerAngles.y.ToString("##0.0#") + ',' +
+			rotation.eulerAngles.z.ToString("##0.0#")
 		);
 	}
 
