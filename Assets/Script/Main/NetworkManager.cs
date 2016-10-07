@@ -127,9 +127,9 @@ public class NetworkManager : MonoBehaviour
 
 		m_SocketObserver.Write(
 			"rot," +
-			rotation.eulerAngles.x.ToString("##0.0#") + ',' +
-			rotation.eulerAngles.y.ToString("##0.0#") + ',' +
-			rotation.eulerAngles.z.ToString("##0.0#")
+			rotation.eulerAngles.x.ToString("##0") + ',' +
+			rotation.eulerAngles.y.ToString("##0") + ',' +
+			rotation.eulerAngles.z.ToString("##0")
 		);
 	}
 
