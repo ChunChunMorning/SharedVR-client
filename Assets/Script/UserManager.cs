@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-﻿using UnityEngine;
+using UnityEngine;
 
 public class UserManager : MonoBehaviour
 {
@@ -7,9 +7,9 @@ public class UserManager : MonoBehaviour
 	private MainUser m_MainUser;
 
 	[SerializeField]
-	private GameObject m_DummyUser;
+	private DummyUser[] m_DummyUsers;
 
-	private Dictionary<int, DummyUser> m_DummyUsers;
+	private Vector3[] m_Positions;
 
 	public static UserManager Instance
 	{
@@ -30,12 +30,7 @@ public class UserManager : MonoBehaviour
 	}
 	private static UserManager instance = null;
 
-	public static bool IsReady
-	{
-		get { return instance != null; }
-	}
-
-	public MainUser MainUser
+	public MainUser mainUser
 	{
 		get { return m_MainUser; }
 	}
@@ -50,34 +45,67 @@ public class UserManager : MonoBehaviour
 			Debug.LogError("There are two instance!");
 			DestroyImmediate(this);
 		}
-
-		m_DummyUsers = new Dictionary<int, DummyUser>();
 	}
 
-	public void Add(int id, Vector3 position)
+	void Start()
 	{
-		var dummyUser = (GameObject)Instantiate(m_DummyUser, position, Quaternion.identity);
-		dummyUser.transform.SetParent(transform);
-		var user = dummyUser.GetComponent<DummyUser>();
-		user.ID = id;
-		m_DummyUsers[id] = user;
+		m_Positions = new Vector3[m_DummyUsers.Length];
+
+		for (int i = 0; i < m_DummyUsers.Length; ++i)
+		{
+			m_Positions[i] = m_DummyUsers[i].transform.position;
+		}
+	}
+
+	public void SetMainUser(int id)
+	{
+		Debug.Assert(0 <= id && id <= 2);
+
+		m_MainUser.gazedObjectID = id;
+		m_MainUser.transform.position = m_DummyUsers[id].transform.position;
+	}
+
+	public void Add(int id)
+	{
+		Debug.Assert(0 <= id && id <= 2);
+
+		m_DummyUsers[id].gameObject.SetActive(true);
 	}
 
 	public void Erase(int id)
 	{
-		m_DummyUsers.Remove(id);
-		m_DummyUsers[id].Remove();
+		Debug.Assert(0 <= id && id <= 2);
+
+		m_DummyUsers[id].gameObject.SetActive(false);
 	}
 
 	public DummyUser Get(int id)
 	{
+		Debug.Assert(0 <= id && id <= 2);
+
 		return m_DummyUsers[id];
+	}
+
+	public void SetPosition(int index)
+	{
+		Debug.Assert(0 <= index && index <= 2);
+
+		m_MainUser.transform.position = m_Positions[index];
+
+		for (int i = 0; i < m_Positions.Length; ++i)
+		{
+			var userIndex = (m_MainUser.gazedObjectID + i) % m_Positions.Length;
+			var posIndex = (index + i) % m_Positions.Length;
+
+			m_DummyUsers[userIndex].transform.position = m_Positions[posIndex];
+		}
 	}
 
 #if UNITY_EDITOR
 	void Reset()
 	{
-		m_MainUser = transform.GetChild(0).GetComponent<MainUser>();
+		m_MainUser = FindObjectOfType<MainUser>();
+		m_DummyUsers = FindObjectsOfType<DummyUser>();
 	}
 #endif
 }

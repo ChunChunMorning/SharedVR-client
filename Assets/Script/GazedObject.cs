@@ -1,33 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Collider))]
-public class GazedObject : GazedBehaviour
+[RequireComponent(typeof(EventTrigger))]
+[RequireComponent(typeof(GazedBehaviour))]
+public class GazedObject : MonoBehaviour
 {
-	public override int gazedObjectID
-	{
-		get { return m_GazedObjectID; }
-	}
 	[SerializeField]
-	private int m_GazedObjectID;
+	private GazedBehaviour m_GazedBehaviour;
 
-#if UNITY_EDITOR
-	void Awake()
+	public void TellGazedObjectID()
 	{
-		if (m_GazedObjectID < 0)
-			Debug.LogError("I don't have GazedObjectID.");
-	}
-#endif
-
-	void Start()
-	{
-		GazedObjectManager.Instance.Add(m_GazedObjectID, this);
+		NetworkManager.Instance.TellGazedObjectID(m_GazedBehaviour.gazedObjectID);
 	}
 
 #if UNITY_EDITOR
 	void Reset()
 	{
 		gameObject.layer = LayerMask.NameToLayer("GazedObject");
-		m_GazedObjectID = -1;
+		m_GazedBehaviour = GetComponent<GazedBehaviour>();
 	}
 
 	[ContextMenu("AssignGazedObjectIDAll")]
@@ -37,7 +28,17 @@ public class GazedObject : GazedBehaviour
 
 		for (int i = 0; i < gazedObjects.Length; ++i)
 		{
-			gazedObjects[i].m_GazedObjectID = int.MaxValue - i;
+			var gazedObjectname = gazedObjects[i].name;
+
+			if (
+				gazedObjectname.IndexOf("user", System.StringComparison.CurrentCultureIgnoreCase) != -1 ||
+				gazedObjectname.IndexOf("card", System.StringComparison.CurrentCultureIgnoreCase) != -1
+			)
+			{
+				continue;
+			}
+
+			gazedObjects[i].m_GazedBehaviour.SetInitGazedObjectID(int.MaxValue - i);
 		}
 	}
 #endif

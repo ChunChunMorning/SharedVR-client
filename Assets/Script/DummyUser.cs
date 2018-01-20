@@ -1,41 +1,50 @@
-﻿﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class DummyUser : User
+public class DummyUser : MonoBehaviour
 {
 	[SerializeField]
 	private float m_Smoothness;
 
-	private Transform m_Target;
+	private Quaternion m_Target = Quaternion.identity;
 
-	void Update()
+	[SerializeField]
+	private GazedBehaviour m_GazedBehaviour;
+
+	public int gazedObjectID
 	{
-		if (m_Target == null)
-			return;
-
-		var dir = m_Target.position - transform.position;
-		dir.y = 0f;
-		transform.rotation = Quaternion.Slerp(
-			transform.rotation,
-			Quaternion.LookRotation(dir),
-			m_Smoothness * Time.deltaTime
-		);
+		set { m_GazedBehaviour.gazedObjectID = value; }
+		get { return m_GazedBehaviour.gazedObjectID; }
 	}
 
-	public void LookAt(Transform target)
+	void FixedUpdate()
 	{
-		m_Target = target;
+		transform.rotation = Quaternion.Slerp(transform.rotation, m_Target, m_Smoothness);
 	}
 
-	public void Remove()
+	public void LookAt(int targetID)
 	{
-		GazedObjectManager.Instance.Remove(gazedObjectID);
-		Destroy(gameObject);
+		try
+		{
+			var target = GazedObjectManager.Instance.Get(targetID).transform;
+
+			m_Target = Quaternion.LookRotation(target.position - transform.position);
+		}
+		catch (KeyNotFoundException)
+		{
+			Debug.LogWarning(gazedObjectID + " see " + targetID + ".");
+		}
+	}
+
+	public void SetRotation(float x, float y, float z)
+	{
+		m_Target = Quaternion.Euler(x, y, z);
 	}
 
 #if UNITY_EDITOR
 	void Reset()
 	{
-		gameObject.layer = LayerMask.NameToLayer("GazedObject");
+		m_GazedBehaviour = GetComponent<GazedBehaviour>();
 	}
 #endif
 }

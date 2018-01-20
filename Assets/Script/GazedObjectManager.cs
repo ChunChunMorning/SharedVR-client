@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-﻿using UnityEngine;
+using UnityEngine;
 
 public class GazedObjectManager : MonoBehaviour
 {
@@ -40,11 +40,15 @@ public class GazedObjectManager : MonoBehaviour
 
 	public void Add(int id, GazedBehaviour gazedObject)
 	{
+		Debug.Assert(!m_GazedObjects.ContainsKey(id));
+
 		m_GazedObjects[id] = gazedObject;
 	}
 
 	public void Remove(int id)
 	{
+		Debug.Assert(m_GazedObjects.ContainsKey(id));
+
 		m_GazedObjects.Remove(id);
 	}
 

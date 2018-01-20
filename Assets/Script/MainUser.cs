@@ -1,19 +1,22 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 
-public class MainUser : User
+public class MainUser : MonoBehaviour
 {
-	private Transform m_CameraTransform;
-	private Vector3 m_Offset;
-
-	void Awake()
+	public int gazedObjectID
 	{
-		m_CameraTransform = Camera.main.transform;
-		m_Offset = m_CameraTransform.position - transform.position;
+		set
+		{
+			transform.GetChild (0).GetComponent<Renderer> ().material.color = PlayerColors.Get (value);
+
+			m_gazedObjectID = value;
+		}
+
+		get { return m_gazedObjectID; }
 	}
+	[SerializeField] private int m_gazedObjectID;
 
-	void LateUpdate()
+	void FixedUpdate ()
 	{
-		m_CameraTransform.position = transform.position + m_Offset;
-		transform.rotation = m_CameraTransform.rotation;
+		NetworkManager.Instance.TellRotation(transform.rotation);
 	}
 }

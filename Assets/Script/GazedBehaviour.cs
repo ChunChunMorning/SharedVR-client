@@ -1,10 +1,33 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GazedBehaviour : MonoBehaviour
 {
-	public virtual int gazedObjectID
+	[SerializeField]
+	private int m_GazedObjectID;
+
+	public int gazedObjectID
 	{
-		get { throw new NotSupportedException(); }
+		set
+		{
+			GazedObjectManager.Instance.Remove(m_GazedObjectID);
+			GazedObjectManager.Instance.Add(value, this);
+			m_GazedObjectID = value;
+		}
+		get
+		{
+			return m_GazedObjectID;
+		}
 	}
+
+	void Start()
+	{
+		GazedObjectManager.Instance.Add(m_GazedObjectID, this);
+	}
+
+#if UNITY_EDITOR
+	public void SetInitGazedObjectID(int id)
+	{
+		m_GazedObjectID = id;
+	}
+#endif
 }
